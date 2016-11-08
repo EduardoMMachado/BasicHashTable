@@ -1,14 +1,17 @@
 #include "hashTable.h"
 
 int main() {
-  int max=10000;
-  hash* hashTable = hashCreate(20);
+  int max=1000000;
+  int i;
+  hash* hashTable = hashCreate(5051);
 
-  for( int i=0; i<max; i+=5){
+  puts("Put");
+  for( i=0; i<max; ++i){
     hashPut(hashTable, i, max-i);
   }
 
-  for( int i=0; i<max; i+=5){
+  puts("Get");
+  for( i=0; i<max; ++i){
     printf("%d\n", hashGet(hashTable, i));
   }
 

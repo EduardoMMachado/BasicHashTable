@@ -29,14 +29,16 @@ hash* hashCreate( int size ){
 }
 
 void hashPut( hash* hashTable, int key, int value ){
-    node* auxNode = (node*)malloc(sizeof(node));
     int hashIndex = key % hashTable->size;
+    node* auxNode = &hashTable->array[hashIndex];
 
-    while( hashTable->array[hashIndex].next != NULL ){
-        auxNode = hashTable->array[hashIndex].next;
+    while( auxNode->next != NULL ){
+        auxNode = auxNode->next;
     }
+
     auxNode->key = key;
     auxNode->value = value;
+
     auxNode->next = (node*)malloc( sizeof( node ) );
     auxNode->next->next = NULL;
     auxNode->next->key = -1;
@@ -45,7 +47,7 @@ void hashPut( hash* hashTable, int key, int value ){
 
 int hashGet( hash* hashTable, int key ){
     int hashIndex = key % hashTable->size;
-    node* auxNode = (node*)malloc(sizeof(node));
+    node* auxNode = &hashTable->array[hashIndex];
 
     auxNode = &hashTable->array[hashIndex];
 
@@ -53,6 +55,7 @@ int hashGet( hash* hashTable, int key ){
         if( auxNode->key == key ) return( auxNode->value );
         else auxNode = auxNode->next;
     }
+    
     return( -1 );
 }
 
