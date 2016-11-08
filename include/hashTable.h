@@ -13,7 +13,7 @@ typedef struct hash hash;
 // Retorno:
 //    hash: Um tabela hash com todas as alocações já feitas dentro da função.
 //==============================================================================
-hash hashCreate( int size );
+hash* hashCreate( int size );
 
 //==============================================================================
 // Insere um elemento na tabela hash.
@@ -35,7 +35,7 @@ void hashPut( hash* hashTable, int key, int value );
 //    int:  conteúdo do elemento buscado, caso a busca tenha sucesso;
 //          -1, caso o elemento não tenha sido encontrado.
 //==============================================================================
-int hashGet( hash* hashTable, key int );
+int hashGet( hash* hashTable, int key );
 
 //==============================================================================
 // Remove um elemento da hash.
@@ -46,4 +46,4 @@ int hashGet( hash* hashTable, key int );
 //    int:  0, caso a remoção tenha sucesso;
 //          -1, caso o elemento não tenha sido encontrado.
 //==============================================================================
-int hashRemove( hash* hashTable, key int );
+int hashRemove( hash* hashTable, int key );
